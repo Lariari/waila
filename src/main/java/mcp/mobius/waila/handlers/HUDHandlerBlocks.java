@@ -83,7 +83,14 @@ public class HUDHandlerBlocks implements IWailaDataProvider {
 		
 		String modName = ModIdentification.nameFromStack(itemStack);
 		if (modName != null && !modName.equals("")){
-			currenttip.add(BLUE + ITALIC + modName);
+			if (!config.getConfig("secret.sneakmod")) {
+				currenttip.add(BLUE + ITALIC + modName);
+			}
+			else {
+				if (accessor.getPlayer().isSneaking()) {
+					currenttip.add(BLUE + ITALIC + modName);
+				}
+			}
 		}
 		
 		return currenttip;
