@@ -11,7 +11,8 @@ public class VanillaTooltipHandler {
 	@SideOnly(Side.CLIENT)	
 	public void tooltipEvent(ItemTooltipEvent event) {
 		String canonicalName = ModIdentification.nameFromStack(event.itemStack);
-		if (canonicalName != null && !canonicalName.equals(""))
-			event.toolTip.add("\u00a79\u00a7o" + canonicalName);	
+		boolean isCtrl = GuiScreen.isCtrlKeyDown();
+		if (isCtrl && canonicalName != null && !canonicalName.equals(""))
+			event.toolTip.add("\u00a79\u00a7o" + canonicalName);
 	}
 }
